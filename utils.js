@@ -1,4 +1,4 @@
-const eventsURL =
+export const eventsURL =
   "https://nextjs-course-ef7cb-default-rtdb.firebaseio.com/events.json";
 
 export const transformData = (data) => {

@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { getFeaturedEvents, getEventById } from "../../utils";
 import EventSummary from "../../components/event-detail/event-summary";
 import EventContent from "../../components/event-detail/event-content";
@@ -6,7 +7,7 @@ import EventLogistics from "../../components/event-detail/event-logistics";
 const EventDetailPage = ({ event }) => {
   if (!event) {
     return (
-      <div className='center'>
+      <div className="center">
         <p>Loading..</p>
       </div>
     );
@@ -14,6 +15,10 @@ const EventDetailPage = ({ event }) => {
 
   return (
     <>
+      <Head>
+        <title>{event.title}</title>
+        <meta name="description" content={event.description} />
+      </Head>
       <EventSummary title={event.title} />
       <EventLogistics
         date={event.date}
@@ -35,7 +40,7 @@ export const getStaticProps = async (context) => {
     props: {
       event,
     },
-    revalidate: 30
+    revalidate: 30,
   };
 };
 
